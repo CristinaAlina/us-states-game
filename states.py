@@ -46,9 +46,6 @@ class States:
 
     def export_states_to_learn(self, guessed_list):
         """Generates an export with all the states that are not guessed till the calling of this function"""
-        states_to_learn = []
-        for state_name in self.all_data.state:
-            if state_name not in guessed_list:
-                states_to_learn.append(state_name)
+        states_to_learn = [state_name for state_name in self.all_data.state if state_name not in guessed_list]
         data_to_csv = pandas.DataFrame(states_to_learn)
         data_to_csv.to_csv(EXPORT_FILE)
